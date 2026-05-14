@@ -1,0 +1,599 @@
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Geist:wght@300;400;500&display=swap');
+
+  :root {
+    --beige: #F5F0E8;
+    --beige-2: #EDE6D8;
+    --beige-3: #DDD5C4;
+    --warm-white: #FAFAF8;
+    --charcoal: #1A1A18;
+    --mid-gray: #6B6B67;
+    --light-gray: #AEADA8;
+    --border: #D8D2C8;
+    --gold: #B8A882;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Geist', sans-serif;
+    background: var(--warm-white);
+    color: var(--charcoal);
+    min-height: 100vh;
+  }
+
+  /* NAV */
+  .nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 32px;
+    border-bottom: 0.5px solid var(--border);
+    background: var(--warm-white);
+  }
+  .logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: 22px;
+    letter-spacing: 0.32em;
+    color: var(--charcoal);
+  }
+  .logo span { color: var(--gold); }
+  .nav-badge {
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    color: var(--mid-gray);
+    border: 0.5px solid var(--border);
+    padding: 4px 10px;
+    border-radius: 20px;
+  }
+
+  /* HERO */
+  .hero {
+    text-align: center;
+    padding: 52px 32px 40px;
+    border-bottom: 0.5px solid var(--border);
+    background: linear-gradient(180deg, var(--beige) 0%, var(--warm-white) 100%);
+  }
+  .hero-eyebrow {
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    color: var(--mid-gray);
+    margin-bottom: 14px;
+    text-transform: uppercase;
+  }
+  .hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: 38px;
+    line-height: 1.15;
+    color: var(--charcoal);
+    margin-bottom: 12px;
+  }
+  .hero-title em { font-style: italic; color: var(--gold); }
+  .hero-sub {
+    font-size: 13px;
+    color: var(--mid-gray);
+    line-height: 1.6;
+    max-width: 420px;
+    margin: 0 auto;
+  }
+
+  /* VIBE FORM */
+  .form-wrap {
+    padding: 32px 28px 0;
+    max-width: 680px;
+    margin: 0 auto;
+  }
+  .form-section-label {
+    font-size: 9px;
+    letter-spacing: 0.18em;
+    color: var(--mid-gray);
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  .vibe-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 24px;
+  }
+  .chip {
+    padding: 8px 16px;
+    border-radius: 20px;
+    border: 0.5px solid var(--border);
+    background: var(--warm-white);
+    color: var(--charcoal);
+    font-family: 'Geist', sans-serif;
+    font-size: 12px;
+    cursor: pointer;
+    transition: all 0.18s ease;
+    letter-spacing: 0.02em;
+  }
+  .chip:hover { background: var(--beige); border-color: var(--gold); }
+  .chip.selected { background: var(--charcoal); color: #fff; border-color: var(--charcoal); }
+
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+  .form-field label {
+    display: block;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    color: var(--mid-gray);
+    margin-bottom: 6px;
+    text-transform: uppercase;
+  }
+  .form-field input, .form-field select {
+    width: 100%;
+    padding: 10px 14px;
+    border: 0.5px solid var(--border);
+    border-radius: 6px;
+    background: var(--warm-white);
+    color: var(--charcoal);
+    font-family: 'Geist', sans-serif;
+    font-size: 13px;
+    outline: none;
+    transition: border-color 0.15s;
+  }
+  .form-field input:focus, .form-field select:focus {
+    border-color: var(--charcoal);
+  }
+  .form-field select { appearance: none; cursor: pointer; }
+
+  .shot-types {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 28px;
+  }
+  .shot-chip {
+    padding: 7px 14px;
+    border-radius: 4px;
+    border: 0.5px solid var(--border);
+    background: var(--warm-white);
+    color: var(--charcoal);
+    font-size: 11px;
+    cursor: pointer;
+    transition: all 0.18s;
+    letter-spacing: 0.04em;
+  }
+  .shot-chip:hover { background: var(--beige); }
+  .shot-chip.selected { background: var(--charcoal); color: #fff; border-color: var(--charcoal); }
+
+  .generate-btn {
+    width: 100%;
+    padding: 15px;
+    background: var(--charcoal);
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-family: 'Geist', sans-serif;
+    font-size: 13px;
+    letter-spacing: 0.08em;
+    cursor: pointer;
+    transition: opacity 0.18s;
+    margin-bottom: 32px;
+  }
+  .generate-btn:hover { opacity: 0.85; }
+  .generate-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+  /* RESULT */
+  .result-wrap {
+    display: none;
+    padding: 0 28px 40px;
+    max-width: 680px;
+    margin: 0 auto;
+  }
+  .result-wrap.visible { display: block; }
+
+  .weather-strip {
+    display: flex;
+    gap: 0;
+    border: 0.5px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 24px;
+  }
+  .weather-day {
+    flex: 1;
+    padding: 12px 8px;
+    text-align: center;
+    border-right: 0.5px solid var(--border);
+    background: var(--warm-white);
+  }
+  .weather-day:last-child { border-right: none; }
+  .weather-day.good { background: var(--beige); }
+  .w-name { font-size: 9px; letter-spacing: 0.1em; color: var(--mid-gray); margin-bottom: 4px; }
+  .w-icon { font-size: 18px; margin-bottom: 4px; }
+  .w-temp { font-size: 12px; font-weight: 500; }
+  .w-cond { font-size: 9px; color: var(--mid-gray); }
+
+  .itinerary-label {
+    font-size: 9px;
+    letter-spacing: 0.18em;
+    color: var(--mid-gray);
+    text-transform: uppercase;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .itinerary-label::after {
+    content: '';
+    flex: 1;
+    height: 0.5px;
+    background: var(--border);
+  }
+
+  .day-block {
+    margin-bottom: 20px;
+    border: 0.5px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  .day-header {
+    padding: 14px 18px;
+    background: var(--beige);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 0.5px solid var(--border);
+  }
+  .day-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 16px;
+    font-weight: 400;
+  }
+  .day-weather-badge {
+    font-size: 10px;
+    color: var(--mid-gray);
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .stop {
+    padding: 14px 18px;
+    border-bottom: 0.5px solid var(--border);
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+  }
+  .stop:last-child { border-bottom: none; }
+  .stop-time {
+    font-size: 10px;
+    color: var(--mid-gray);
+    min-width: 44px;
+    padding-top: 2px;
+    letter-spacing: 0.06em;
+  }
+  .stop-content { flex: 1; }
+  .stop-name {
+    font-size: 13px;
+    font-weight: 500;
+    margin-bottom: 3px;
+  }
+  .stop-why {
+    font-size: 11px;
+    color: var(--mid-gray);
+    line-height: 1.5;
+  }
+  .stop-tag {
+    display: inline-block;
+    font-size: 9px;
+    letter-spacing: 0.08em;
+    padding: 2px 8px;
+    border-radius: 10px;
+    margin-top: 5px;
+    border: 0.5px solid var(--border);
+    color: var(--mid-gray);
+  }
+  .stop-tag.golden { border-color: var(--gold); color: var(--gold); background: #faf6ee; }
+
+  .loading-bar {
+    display: none;
+    padding: 28px;
+    text-align: center;
+  }
+  .loading-bar.visible { display: block; }
+  .loading-text {
+    font-size: 12px;
+    color: var(--mid-gray);
+    letter-spacing: 0.08em;
+    margin-bottom: 12px;
+  }
+  .progress-track {
+    height: 1px;
+    background: var(--border);
+    border-radius: 1px;
+    overflow: hidden;
+    max-width: 300px;
+    margin: 0 auto;
+  }
+  .progress-fill {
+    height: 100%;
+    background: var(--charcoal);
+    width: 0%;
+    transition: width 0.4s ease;
+  }
+
+  .share-row {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+  }
+  .btn-outline {
+    flex: 1;
+    padding: 11px;
+    border: 0.5px solid var(--border);
+    background: var(--warm-white);
+    color: var(--charcoal);
+    font-family: 'Geist', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.15s;
+  }
+  .btn-outline:hover { background: var(--beige); }
+  .btn-solid {
+    flex: 1;
+    padding: 11px;
+    background: var(--charcoal);
+    color: #fff;
+    border: none;
+    font-family: 'Geist', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: opacity 0.15s;
+  }
+  .btn-solid:hover { opacity: 0.85; }
+
+  .ai-note {
+    font-size: 10px;
+    color: var(--light-gray);
+    text-align: center;
+    margin-top: 16px;
+    letter-spacing: 0.04em;
+  }
+
+  .divider {
+    height: 0.5px;
+    background: var(--border);
+    margin: 0 28px 28px;
+  }
+</style>
+
+<div class="nav">
+  <div class="logo">B<span>E</span>SP</div>
+  <div class="nav-badge">FOR PHOTOGRAPHERS</div>
+</div>
+
+<div class="hero">
+  <div class="hero-eyebrow">AI-powered itinerary generator</div>
+  <div class="hero-title">Every trip, <em>crafted</em><br>for the perfect shot.</div>
+  <div class="hero-sub">Tell us your vibe, your crew, and the shots you're after. BESP builds a weather-aware itinerary tailored to golden hour, blue hour, and beyond.</div>
+</div>
+
+<div class="form-wrap">
+  <div class="form-section-label">Your vibe</div>
+  <div class="vibe-chips">
+    <div class="chip" onclick="toggleChip(this,'vibe')">Moody & dark</div>
+    <div class="chip selected" onclick="toggleChip(this,'vibe')">Airy & minimal</div>
+    <div class="chip" onclick="toggleChip(this,'vibe')">Warm & golden</div>
+    <div class="chip" onclick="toggleChip(this,'vibe')">Urban grit</div>
+    <div class="chip" onclick="toggleChip(this,'vibe')">Coastal light</div>
+    <div class="chip" onclick="toggleChip(this,'vibe')">Dramatic peaks</div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-field">
+      <label>Destination</label>
+      <input type="text" id="dest-input" placeholder="e.g. Kyoto, Japan" value="Kyoto, Japan">
+    </div>
+    <div class="form-field">
+      <label>Trip dates</label>
+      <input type="text" id="dates-input" placeholder="Jun 10 – Jun 13" value="Jun 10 – Jun 13">
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-field">
+      <label>Party</label>
+      <select id="party-select">
+        <option>Solo shooter</option>
+        <option>Couple (2 people)</option>
+        <option selected>Small crew (3–4)</option>
+        <option>Large group (5+)</option>
+      </select>
+    </div>
+    <div class="form-field">
+      <label>Trip type</label>
+      <select id="type-select">
+        <option>Street & architecture</option>
+        <option selected>Nature & landscape</option>
+        <option>Portrait & lifestyle</option>
+        <option>Astrophotography</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="form-section-label">Shot types wanted</div>
+  <div class="shot-types">
+    <div class="shot-chip selected" onclick="toggleChip(this,'shot')">Golden hour</div>
+    <div class="shot-chip selected" onclick="toggleChip(this,'shot')">Reflections</div>
+    <div class="shot-chip" onclick="toggleChip(this,'shot')">Fog & mist</div>
+    <div class="shot-chip selected" onclick="toggleChip(this,'shot')">Long exposure</div>
+    <div class="shot-chip" onclick="toggleChip(this,'shot')">Silhouettes</div>
+    <div class="shot-chip" onclick="toggleChip(this,'shot')">Rain & puddles</div>
+    <div class="shot-chip" onclick="toggleChip(this,'shot')">Bloom & flowers</div>
+    <div class="shot-chip" onclick="toggleChip(this,'shot')">Night / city lights</div>
+  </div>
+
+  <button class="generate-btn" id="gen-btn" onclick="generateItinerary()">Generate my itinerary →</button>
+</div>
+
+<div class="loading-bar" id="loading">
+  <div class="loading-text" id="loading-text">Checking weather across your dates...</div>
+  <div class="progress-track"><div class="progress-fill" id="progress"></div></div>
+</div>
+
+<div class="divider" id="result-divider" style="display:none"></div>
+
+<div class="result-wrap" id="result">
+  <div class="weather-strip" id="weather-strip"></div>
+  <div class="itinerary-label">Your itinerary</div>
+  <div id="itinerary-days"></div>
+  <div class="share-row">
+    <button class="btn-outline">Save to profile</button>
+    <button class="btn-outline">Share link</button>
+    <button class="btn-solid" onclick="sendPrompt('Can you refine my BESP itinerary to focus more on blue hour shots and add restaurant recommendations?')">Refine with AI ↗</button>
+  </div>
+  <div class="ai-note">Itinerary generated by BESP AI · Weather data updates 24h before each day</div>
+</div>
+
+<script>
+function toggleChip(el, group) {
+  if (group === 'vibe') {
+    document.querySelectorAll('.chip').forEach(c => c.classList.remove('selected'));
+    el.classList.add('selected');
+  } else {
+    el.classList.toggle('selected');
+  }
+}
+
+const WEATHER_DATA = [
+  { day: 'TUE', icon: '☁️', temp: '18°', cond: 'Overcast', good: false },
+  { day: 'WED', icon: '🌤', temp: '22°', cond: 'Partly cloudy', good: true },
+  { day: 'THU', icon: '☀️', temp: '24°', cond: 'Clear', good: true },
+  { day: 'FRI', icon: '🌧', temp: '17°', cond: 'Rain a.m.', good: false },
+];
+
+const ITINERARY = {
+  days: [
+    {
+      title: 'Day 1 — Arashiyama',
+      weather: '☁️ Overcast · soft diffused light',
+      note: 'overcast',
+      stops: [
+        { time: '6:00 AM', name: 'Bamboo Grove', why: 'Overcast sky = zero harsh shadows in the grove. Perfect for moody, even light filtering through culms.', tag: 'Long exposure', golden: false },
+        { time: '8:30 AM', name: 'Tenryu-ji Garden', why: 'Reflection pond with koi. Cloud cover softens contrast on the water — ideal for reflections.', tag: 'Reflections', golden: false },
+        { time: '1:00 PM', name: 'Togetsukyo Bridge', why: 'River wide angle. Overcast works for long exposure with ND filter — silky water effect.', tag: 'Long exposure', golden: false },
+        { time: '5:30 PM', name: 'Kimono Forest', why: 'Twilight illumination starts — the cylinders glow better with low ambient light from cloud cover.', tag: 'Dusk', golden: false },
+      ]
+    },
+    {
+      title: 'Day 2 — Fushimi & Gion',
+      weather: '🌤 Partly cloudy · golden hour 6:47 PM',
+      note: 'golden',
+      stops: [
+        { time: '5:30 AM', name: 'Fushimi Inari (summit path)', why: 'Blue hour before crowds arrive. Mist often clings to the hillside torii at this hour.', tag: 'Blue hour', golden: true },
+        { time: '8:00 AM', name: 'Main torii gate', why: 'Soft morning light from the east lights the vermilion gates face-on without flare.', tag: 'Architecture', golden: false },
+        { time: '3:00 PM', name: 'Gion Hanamikoji', why: 'Prep shot list: narrow lane compression with geisha district machiya townhouses.', tag: 'Street', golden: false },
+        { time: '6:30 PM', name: 'Yasaka Pagoda', why: 'Golden hour hits the five-story pagoda from the west — 17 minutes of prime light today.', tag: '✦ Golden hour', golden: true },
+      ]
+    },
+    {
+      title: 'Day 3 — Higashiyama & Philosopher\'s Walk',
+      weather: '☀️ Clear · golden hour 6:49 PM',
+      note: 'golden',
+      stops: [
+        { time: '5:45 AM', name: 'Philosopher\'s Walk canal', why: 'Still water reflects the canal-side trees. Clear sky = vivid blue reflection before sunrise.', tag: 'Reflections', golden: true },
+        { time: '9:00 AM', name: 'Ninenzaka & Sannenzaka', why: 'Stone-paved alleys catch raking morning light. Best contrast window: 8–10 AM.', tag: 'Architecture', golden: false },
+        { time: '2:00 PM', name: 'Kiyomizudera stage', why: 'Wide view over Kyoto with depth. Afternoon haze adds atmospheric perspective.', tag: 'Landscape', golden: false },
+        { time: '6:45 PM', name: 'Maruyama Park pond', why: 'Clear sky = vivid golden-hour reflections in the central pond. 18 min window.', tag: '✦ Golden hour', golden: true },
+      ]
+    },
+    {
+      title: 'Day 4 — Rain morning / Nishiki',
+      weather: '🌧 Rain a.m. · clearing 2 PM',
+      note: 'rain',
+      stops: [
+        { time: '7:00 AM', name: 'Pontocho alley', why: 'Rain-slicked stone and neon reflections in puddles — a rare moody opportunity unique to wet mornings.', tag: 'Rain & puddles', golden: false },
+        { time: '9:30 AM', name: 'Nishiki Market covered arcade', why: 'Overhead coverage — shoot vendors, color, and texture fully sheltered from rain.', tag: 'Street', golden: false },
+        { time: '2:00 PM', name: 'Kinkaku-ji (Golden Pavilion)', why: 'Post-rain sky often shows dramatic clouds. Reflection in Kyoko-chi pond clears as rain stops.', tag: 'Reflections', golden: true },
+        { time: '5:00 PM', name: 'Ryoan-ji rock garden', why: 'Washed stone and raked gravel with evening light — subtle textures pop after rain.', tag: 'Architecture', golden: false },
+      ]
+    }
+  ]
+};
+
+function generateItinerary() {
+  const btn = document.getElementById('gen-btn');
+  const loading = document.getElementById('loading');
+  const progress = document.getElementById('progress');
+  const loadingText = document.getElementById('loading-text');
+  const result = document.getElementById('result');
+  const divider = document.getElementById('result-divider');
+
+  btn.disabled = true;
+  loading.classList.add('visible');
+  result.classList.remove('visible');
+  divider.style.display = 'none';
+
+  const steps = [
+    [0, 'Checking weather across your dates...'],
+    [25, 'Finding golden hour windows for Kyoto...'],
+    [52, 'Matching locations to your shot types...'],
+    [74, 'Optimizing route for your party size...'],
+    [90, 'Finalizing your personalized itinerary...'],
+    [100, 'Done.'],
+  ];
+
+  let i = 0;
+  function step() {
+    if (i >= steps.length) {
+      setTimeout(() => {
+        loading.classList.remove('visible');
+        renderResult();
+        result.classList.add('visible');
+        divider.style.display = 'block';
+        btn.disabled = false;
+      }, 400);
+      return;
+    }
+    const [pct, txt] = steps[i++];
+    progress.style.width = pct + '%';
+    loadingText.textContent = txt;
+    setTimeout(step, 520);
+  }
+  step();
+}
+
+function renderResult() {
+  const strip = document.getElementById('weather-strip');
+  strip.innerHTML = WEATHER_DATA.map(d => `
+    <div class="weather-day ${d.good ? 'good' : ''}">
+      <div class="w-name">${d.day}</div>
+      <div class="w-icon">${d.icon}</div>
+      <div class="w-temp">${d.temp}</div>
+      <div class="w-cond">${d.cond}</div>
+    </div>
+  `).join('');
+
+  const days = document.getElementById('itinerary-days');
+  days.innerHTML = ITINERARY.days.map(day => `
+    <div class="day-block">
+      <div class="day-header">
+        <div class="day-title">${day.title}</div>
+        <div class="day-weather-badge">${day.weather}</div>
+      </div>
+      ${day.stops.map(s => `
+        <div class="stop">
+          <div class="stop-time">${s.time}</div>
+          <div class="stop-content">
+            <div class="stop-name">${s.name}</div>
+            <div class="stop-why">${s.why}</div>
+            <span class="stop-tag ${s.golden ? 'golden' : ''}">${s.tag}</span>
+          </div>
+        </div>
+      `).join('')}
+    </div>
+  `).join('');
+}
+</script>
